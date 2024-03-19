@@ -1,26 +1,24 @@
 import React from 'react'
 import appleImage from '../../Images/Apple_logo_black.svg.png'
+import { CompanySearch } from '../../company';
 
 type Props = {
-    companyName:string;
-    ticker: string;
-    price: number;
+    id:string;
+    searchResult:CompanySearch;
 }
 
-const Card : React.FC<Props> = ({ companyName, ticker, price }: Props): JSX.Element => {
+const Card : React.FC<Props> = ({ id, searchResult }: Props): JSX.Element => {
   return <div className='card'>
     <img
-        src={appleImage}
-        alt="image"
+        //src={appleImage}
+        alt="Company Logo"
     />
     <div className='details'>
-        <h2>{companyName} ({ticker})</h2>
-        <p>${price}</p>
+        <h2>{searchResult.name} ({searchResult.symbol})</h2>
+        <p>{searchResult.currency}</p>
     </div>
     <p className='infon'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur repellat ipsum laborum 
-        consequuntur accusantium deleniti esse optio voluptate, tempora beatae nisi, ducimus, 
-        quisquam sequi fugit nulla aspernatur adipisci soluta dolor!
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
     </p>
   </div>
 }
